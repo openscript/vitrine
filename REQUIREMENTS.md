@@ -1,10 +1,14 @@
 # Vitrine
 
-Analog zu den Vitrinen im ZLI-Gebäude, soll ein Möglichkeit geschaffen werden, Projekte und Arbeiten, welche im Ausbildungszentrum entstanden sind online zu präsentieren. Dazu soll eine Webapplikation erstellt werden, welche eine Präsentationsfläche, den Lernenden zur Verfügung stellt.
+Analog zu Vitrinen oder Schaufenstern, soll ein Möglichkeit geschaffen werden, Projekte und Arbeiten, welche im Rahmen einer Informatik- oder Mediamatikausbildung entstanden sind im Internet zu präsentieren. Dazu soll eine Webapplikation erstellt werden, welche eine Präsentationsfläche, den Lernenden zur Verfügung stellt.
+
+## Abgrenzung
+
+- Bei geschlechterspezifischen Personenbezeichnungen sind immer alle Geschlechter gemeint.
 
 ## Rollen
 
-Vitrine kennt folgende Rollen. Bei geschlechterspezifischen Personenbezeichnungen sind immer alle Geschlechter gemeint.
+Vitrine kennt folgende Rollen:
 
 - **Lernender** aus den Bereichen Mediamatik und Informatik
   - .. im Basislehrjahr
