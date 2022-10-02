@@ -1,14 +1,14 @@
 import { css } from '@emotion/react'
+import { Button } from '@mantine/core'
 import type { NextPage } from 'next'
 
 const HomeStyles = css`
-  background-color: red;
 `
 
 const Home: NextPage = () => {
   return (
     <div css={HomeStyles}>
-      Hello
+      <Button>Mantine Button</Button>
     </div>
   )
 }
