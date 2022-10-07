@@ -1,7 +1,8 @@
+import { AppShell } from "@mantine/core";
 import { PropsWithChildren } from "react";
 
 type EmptyLayoutProps = PropsWithChildren<{}>;
 
 export default function EmptyLayout({ children }: EmptyLayoutProps) {
-  return <div>{children}</div>
+  return <AppShell>{children}</AppShell>
 }
