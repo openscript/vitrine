@@ -13,7 +13,7 @@
     "@mantine/core": "^5.5.4",
     "@mantine/form": "^5.5.4",
     "@mantine/hooks": "^5.5.4",
-    "@supabase/supabase-js": "^1.35.7",
+    "@supabase/supabase-js": "^2.0.0-rc.10",
     "next": "12.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
