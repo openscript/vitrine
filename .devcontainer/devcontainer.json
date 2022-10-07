@@ -19,7 +19,8 @@
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
 				"dbaeumer.vscode-eslint",
-				"tamasfe.even-better-toml"
+				"tamasfe.even-better-toml",
+				"styled-components.vscode-styled-components"
 			]
 		}
 	},
