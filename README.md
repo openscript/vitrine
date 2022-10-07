@@ -10,4 +10,4 @@ Vitrine create a place to showcase your digital projects.
 1. Install dependencies <br> `yarn install`
 1. Run supabase <br> `supabase start`
 1. Add a `.env.local` with the variables shown in `.env.template`
-1. Run the frontend development server <br> `yarn start`
+1. Run the frontend development server <br> `yarn dev`
