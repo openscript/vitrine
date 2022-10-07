@@ -20,7 +20,8 @@
 			"extensions": [
 				"dbaeumer.vscode-eslint",
 				"tamasfe.even-better-toml",
-				"styled-components.vscode-styled-components"
+				"styled-components.vscode-styled-components",
+				"esbenp.prettier-vscode"
 			]
 		}
 	},

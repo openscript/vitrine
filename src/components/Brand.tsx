@@ -1,5 +1,5 @@
-import { css } from "@emotion/react";
-import { FormattedMessage } from "react-intl";
+import { css } from '@emotion/react';
+import { FormattedMessage } from 'react-intl';
 
 const brandStyles = css`
   margin: 0;
@@ -8,5 +8,9 @@ const brandStyles = css`
 `;
 
 export default function Brand() {
-  return <h1 css={brandStyles}><FormattedMessage id="brand" /></h1>;
+  return (
+    <h1 css={brandStyles}>
+      <FormattedMessage id="brand" />
+    </h1>
+  );
 }

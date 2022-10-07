@@ -1,6 +1,6 @@
-import { MantineProvider } from '@mantine/core'
+import { MantineProvider } from '@mantine/core';
 import { NextPage } from 'next';
-import type { AppProps } from 'next/app'
+import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { ReactElement, ReactNode, useMemo } from 'react';
 import { IntlProvider } from 'react-intl';
@@ -9,12 +9,12 @@ import German from '../i18n/de.json';
 import English from '../i18n/en.json';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-  getLayout?: (page: ReactElement) => ReactNode
-}
+  getLayout?: (page: ReactElement) => ReactNode;
+};
 
 type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout
-}
+  Component: NextPageWithLayout;
+};
 
 function VitrineApp({ Component, pageProps }: AppPropsWithLayout) {
   const { locale, defaultLocale } = useRouter();
@@ -22,16 +22,16 @@ function VitrineApp({ Component, pageProps }: AppPropsWithLayout) {
 
   const messages = useMemo(() => {
     switch (locale) {
-      case "de":
+      case 'de':
         return German;
-      case "en":
+      case 'en':
         return English;
       default:
         return German;
     }
   }, [locale]);
 
-  const getLayout = Component.getLayout ?? ((page) => <DefaultLayout>{page}</DefaultLayout>)
+  const getLayout = Component.getLayout ?? ((page) => <DefaultLayout>{page}</DefaultLayout>);
 
   return (
     <IntlProvider locale={currentLocale} defaultLocale={defaultLocale} messages={messages}>
@@ -42,4 +42,4 @@ function VitrineApp({ Component, pageProps }: AppPropsWithLayout) {
   );
 }
 
-export default VitrineApp
+export default VitrineApp;
