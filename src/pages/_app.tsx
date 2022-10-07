@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { ReactElement, ReactNode, useMemo } from 'react';
 import { IntlProvider } from 'react-intl';
 import DefaultLayout from '../components/DefaultLayout';
+import GlobalStyles from '../components/GlobalStyles';
 import German from '../i18n/de.json';
 import English from '../i18n/en.json';
 
@@ -36,6 +37,7 @@ function VitrineApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <IntlProvider locale={currentLocale} defaultLocale={defaultLocale} messages={messages}>
       <MantineProvider withGlobalStyles withNormalizeCSS>
+        <GlobalStyles />
         {getLayout(<Component {...pageProps} />)}
       </MantineProvider>
     </IntlProvider>

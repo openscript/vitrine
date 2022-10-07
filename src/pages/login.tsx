@@ -11,7 +11,7 @@ const LoginStyles = css`
 const Login: NextPageWithLayout = () => {
   return (
     <Center css={LoginStyles}>
-      <Paper>Login</Paper>
+      <Paper withBorder>Login</Paper>
     </Center>
   );
 };
