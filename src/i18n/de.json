@@ -1,3 +1,8 @@
 {
-  "brand": "Vitrine"
+  "brand": "Vitrine",
+  "form.email.placeholder": "Bspw.: example@example.com",
+  "form.email.label": "E-Mail",
+  "form.password.label": "Passwort",
+  "form.password.placeholder": "Bspw.: Sehr*sicheres*Passwort",
+  "form.actions.login": "Anmelden"
 }
