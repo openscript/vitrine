@@ -4,6 +4,7 @@ import { useForm } from '@mantine/form';
 import { IconLock, IconMail } from '@tabler/icons';
 import { ReactElement } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
+import Brand from '../components/Brand';
 import EmptyLayout from '../components/EmptyLayout';
 import { NextPageWithLayout } from './_app';
 
@@ -15,6 +16,13 @@ const LoginPaperStyles = css`
   min-width: 24rem;
 `;
 
+const LoginFormStyles = css`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+`;
+
 const Login: NextPageWithLayout = () => {
   const intl = useIntl();
   const form = useForm({
@@ -24,13 +32,17 @@ const Login: NextPageWithLayout = () => {
     },
   });
 
-  const handleSubmit = () => { };
+  const handleSubmit = () => {
+    alert(form.values);
+  };
 
   return (
     <Center css={LoginStyles}>
       <Paper withBorder p="xs" shadow="sm" css={LoginPaperStyles}>
-        <form onSubmit={form.onSubmit(handleSubmit)}>
+        <Brand />
+        <form onSubmit={form.onSubmit(handleSubmit)} css={LoginFormStyles}>
           <TextInput
+            type="email"
             required
             placeholder={intl.formatMessage({ id: 'form.email.placeholder' })}
             label={intl.formatMessage({ id: 'form.email.label' })}
