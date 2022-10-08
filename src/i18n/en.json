@@ -4,5 +4,9 @@
   "form.email.label": "Email",
   "form.password.label": "Password",
   "form.password.placeholder": "E. g.: Very*secure*password",
-  "form.actions.login": "Login"
+  "form.actions.login": "Login",
+  "form.actions.register": "Register",
+  "form.password-confirmation.label": "Password confirmation",
+  "page.register.title": "Register",
+  "page.login.title": "Login"
 }

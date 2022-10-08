@@ -9,27 +9,28 @@ import Brand from '../components/Brand';
 import EmptyLayout from '../components/EmptyLayout';
 import { NextPageWithLayout } from './_app';
 
-const LoginStyles = css`
+const RegisterStyles = css`
   height: 100%;
 `;
 
-const LoginPaperStyles = css`
+const RegisterPaperStyles = css`
   min-width: 24rem;
 `;
 
-const LoginFormStyles = css`
+const RegisterFormStyles = css`
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin-top: 1rem;
 `;
 
-const Login: NextPageWithLayout = () => {
+const Register: NextPageWithLayout = () => {
   const intl = useIntl();
   const form = useForm({
     initialValues: {
       email: '',
       password: '',
+      passwordConfirmation: '',
     },
   });
 
@@ -38,10 +39,10 @@ const Login: NextPageWithLayout = () => {
   };
 
   return (
-    <Center css={LoginStyles}>
-      <Paper withBorder p="xs" shadow="sm" css={LoginPaperStyles}>
+    <Center css={RegisterStyles}>
+      <Paper withBorder p="xs" shadow="sm" css={RegisterPaperStyles}>
         <Brand />
-        <form onSubmit={form.onSubmit(handleSubmit)} css={LoginFormStyles}>
+        <form onSubmit={form.onSubmit(handleSubmit)} css={RegisterFormStyles}>
           <TextInput
             type="email"
             required
@@ -57,20 +58,27 @@ const Login: NextPageWithLayout = () => {
             {...form.getInputProps('password')}
             icon={<IconLock size={20} stroke={1.5} />}
           />
+          <PasswordInput
+            required
+            placeholder={intl.formatMessage({ id: 'form.password.placeholder' })}
+            label={intl.formatMessage({ id: 'form.password-confirmation.label' })}
+            {...form.getInputProps('passwordConfirmation')}
+            icon={<IconLock size={20} stroke={1.5} />}
+          />
           <Button type="submit">
-            <FormattedMessage id="form.actions.login" />
+            <FormattedMessage id="form.actions.register" />
           </Button>
         </form>
         <Text variant="link">
-          <Link href="/register">{intl.formatMessage({ id: 'page.register.title' })}</Link>
+          <Link href="/login">{intl.formatMessage({ id: 'page.login.title' })}</Link>
         </Text>
       </Paper>
     </Center>
   );
 };
 
-Login.getLayout = function getLayout(page: ReactElement) {
+Register.getLayout = function getLayout(page: ReactElement) {
   return <EmptyLayout>{page}</EmptyLayout>;
 };
 
-export default Login;
+export default Register;
