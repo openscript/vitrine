@@ -1,12 +1,13 @@
 import { css } from '@emotion/react';
-import { Button, Center, Paper, PasswordInput, Text, TextInput } from '@mantine/core';
+import { Button, Center, LoadingOverlay, Paper, PasswordInput, Text, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { IconLock, IconMail } from '@tabler/icons';
 import Link from 'next/link';
-import { ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import Brand from '../components/Brand';
 import EmptyLayout from '../components/EmptyLayout';
+import { supabase } from '../utils/supabaseClient';
 import { NextPageWithLayout } from './_app';
 
 const RegisterStyles = css`
@@ -25,6 +26,7 @@ const RegisterFormStyles = css`
 `;
 
 const Register: NextPageWithLayout = () => {
+  const [loading, setLoading] = useState(false);
   const intl = useIntl();
   const form = useForm({
     initialValues: {
@@ -34,13 +36,21 @@ const Register: NextPageWithLayout = () => {
     },
   });
 
-  const handleSubmit = () => {
-    alert(form.values);
+  const handleSubmit = async () => {
+    setLoading(true);
+    const { data, error } = await supabase.auth.signUp({ email: form.values.email, password: form.values.password });
+    setLoading(false);
+    if (error) {
+      alert(error.message);
+    } else {
+      alert(data.user?.email);
+    }
   };
 
   return (
     <Center css={RegisterStyles}>
       <Paper withBorder p="xs" shadow="sm" css={RegisterPaperStyles}>
+        <LoadingOverlay visible={loading} />
         <Brand />
         <form onSubmit={form.onSubmit(handleSubmit)} css={RegisterFormStyles}>
           <TextInput
