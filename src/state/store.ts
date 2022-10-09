@@ -8,6 +8,6 @@ export const useStore = create<Slices>()(
     devtools((...x) => ({
       ...createSessionSlice(...x),
     })),
-    { name: 'vitrine' }
+    { name: 'vitrine-state' }
   )
 );

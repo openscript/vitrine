@@ -1,13 +1,16 @@
 import { css } from '@emotion/react';
-import { Button, Center, Paper, PasswordInput, Text, TextInput } from '@mantine/core';
+import { Button, Center, LoadingOverlay, Paper, PasswordInput, Text, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { IconLock, IconMail } from '@tabler/icons';
 import Link from 'next/link';
-import { ReactElement } from 'react';
+import { useRouter } from 'next/router';
+import { ReactElement, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
+import AuthGuard from '../components/AuthGuard';
 import Brand from '../components/Brand';
 import EmptyLayout from '../components/EmptyLayout';
-import { NextPageWithLayout } from './_app';
+import { supabase } from '../utils/supabaseClient';
+import { CustomNextPage } from './_app';
 
 const LoginStyles = css`
   height: 100%;
@@ -21,10 +24,12 @@ const LoginFormStyles = css`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-top: 1rem;
+  margin: 1rem 0;
 `;
 
-const Login: NextPageWithLayout = () => {
+const Login: CustomNextPage = () => {
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const intl = useIntl();
   const form = useForm({
     initialValues: {
@@ -33,39 +38,51 @@ const Login: NextPageWithLayout = () => {
     },
   });
 
-  const handleSubmit = () => {
-    alert(form.values);
+  const handleSubmit = async () => {
+    setLoading(true);
+    const { data, error } = await supabase.auth.signInWithPassword({ email: form.values.email, password: form.values.password });
+    setLoading(false);
+    if (error) {
+      alert(error.message);
+    } else {
+      router.push('/');
+    }
   };
 
   return (
-    <Center css={LoginStyles}>
-      <Paper withBorder p="xs" shadow="sm" css={LoginPaperStyles}>
-        <Brand />
-        <form onSubmit={form.onSubmit(handleSubmit)} css={LoginFormStyles}>
-          <TextInput
-            type="email"
-            required
-            placeholder={intl.formatMessage({ id: 'form.email.placeholder' })}
-            label={intl.formatMessage({ id: 'form.email.label' })}
-            {...form.getInputProps('email')}
-            icon={<IconMail size={20} stroke={1.5} />}
-          />
-          <PasswordInput
-            required
-            placeholder={intl.formatMessage({ id: 'form.password.placeholder' })}
-            label={intl.formatMessage({ id: 'form.password.label' })}
-            {...form.getInputProps('password')}
-            icon={<IconLock size={20} stroke={1.5} />}
-          />
-          <Button type="submit">
-            <FormattedMessage id="form.actions.login" />
-          </Button>
-        </form>
-        <Text variant="link">
-          <Link href="/register">{intl.formatMessage({ id: 'page.register.title' })}</Link>
-        </Text>
-      </Paper>
-    </Center>
+    <AuthGuard isUnauthenticatedGuard redirectPath="/">
+      <Center css={LoginStyles}>
+        <Paper withBorder p="xs" shadow="sm" css={LoginPaperStyles}>
+          <LoadingOverlay visible={loading} />
+          <Brand />
+          <form onSubmit={form.onSubmit(handleSubmit)} css={LoginFormStyles}>
+            <TextInput
+              type="email"
+              required
+              placeholder={intl.formatMessage({ id: 'form.email.placeholder' })}
+              label={intl.formatMessage({ id: 'form.email.label' })}
+              {...form.getInputProps('email')}
+              icon={<IconMail size={20} stroke={1.5} />}
+            />
+            <PasswordInput
+              required
+              placeholder={intl.formatMessage({ id: 'form.password.placeholder' })}
+              label={intl.formatMessage({ id: 'form.password.label' })}
+              {...form.getInputProps('password')}
+              icon={<IconLock size={20} stroke={1.5} />}
+            />
+            <Button type="submit">
+              <FormattedMessage id="form.actions.login" />
+            </Button>
+          </form>
+          <Center>
+            <Text variant="link" size="sm">
+              <Link href="/register">{intl.formatMessage({ id: 'page.register.title' })}</Link>
+            </Text>
+          </Center>
+        </Paper>
+      </Center>
+    </AuthGuard>
   );
 };
 

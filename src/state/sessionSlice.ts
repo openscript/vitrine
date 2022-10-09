@@ -1,17 +1,13 @@
+import { Session } from '@supabase/supabase-js';
 import { StateCreator } from 'zustand';
 import { Middlewares } from './middlewares';
 import { Slices } from './slices';
 
-type Session = {
-  token: string;
-};
-
 export type SessionSlice = {
-  session: Session;
-  setSession: (session: Session) => void;
+  session?: Session | null;
+  setSession: (session: Session | null) => void;
 };
 
 export const createSessionSlice: StateCreator<Slices, Middlewares, [], SessionSlice> = (set) => ({
-  session: { token: '' },
   setSession: (session) => set(() => ({ session })),
 });

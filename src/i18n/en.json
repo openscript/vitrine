@@ -8,5 +8,8 @@
   "form.actions.register": "Register",
   "form.password-confirmation.label": "Password confirmation",
   "page.register.title": "Register",
-  "page.login.title": "Login"
+  "page.login.title": "Login",
+  "errors.passwords-do-not-match": "Passwords do not match",
+  "notifications.errors.sign-up-failed": "Sign up failed: {message}",
+  "form.actions.logout": "Logout"
 }
