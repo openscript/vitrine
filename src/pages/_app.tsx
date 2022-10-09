@@ -46,13 +46,14 @@ function VitrineApp({ Component, pageProps }: CustomAppProps) {
     };
     getSession();
 
-    // listen to auth change events
+    // listen to auth state change events
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, newSession) => {
       setSession(newSession);
     });
 
+    // unsubscribe to auth state changes on destruction
     return () => {
       subscription.unsubscribe();
     };

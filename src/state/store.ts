@@ -8,6 +8,9 @@ export const useStore = create<Slices>()(
     devtools((...x) => ({
       ...createSessionSlice(...x),
     })),
-    { name: 'vitrine-state' }
+    {
+      name: 'vitrine-state',
+      partialize: (state) => Object.fromEntries(Object.entries(state).filter(([key]) => !['session'].includes(key))),
+    }
   )
 );
