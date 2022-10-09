@@ -1,4 +1,5 @@
 import { StateCreator } from 'zustand';
+import { Middlewares } from './middlewares';
 import { Slices } from './slices';
 
 type Session = {
@@ -10,9 +11,7 @@ export type SessionSlice = {
   setSession: (session: Session) => void;
 };
 
-export const createSessionSlice: StateCreator<Slices, [['zustand/persist', unknown], ['zustand/devtools', never]], [], SessionSlice> = (
-  set
-) => ({
+export const createSessionSlice: StateCreator<Slices, Middlewares, [], SessionSlice> = (set) => ({
   session: { token: '' },
   setSession: (session) => set(() => ({ session })),
 });
