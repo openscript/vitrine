@@ -1,4 +1,5 @@
 import { MantineProvider } from '@mantine/core';
+import { NotificationsProvider } from '@mantine/notifications';
 import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
@@ -9,15 +10,15 @@ import GlobalStyles from '../components/GlobalStyles';
 import German from '../i18n/de.json';
 import English from '../i18n/en.json';
 
-export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+export type CustomNextPage<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
 
-type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
+type CustomAppProps = AppProps & {
+  Component: CustomNextPage;
 };
 
-function VitrineApp({ Component, pageProps }: AppPropsWithLayout) {
+function VitrineApp({ Component, pageProps }: CustomAppProps) {
   const { locale, defaultLocale } = useRouter();
   let currentLocale = locale || defaultLocale || 'de';
 
@@ -37,8 +38,10 @@ function VitrineApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <IntlProvider locale={currentLocale} defaultLocale={defaultLocale} messages={messages}>
       <MantineProvider withGlobalStyles withNormalizeCSS>
-        <GlobalStyles />
-        {getLayout(<Component {...pageProps} />)}
+        <NotificationsProvider>
+          <GlobalStyles />
+          {getLayout(<Component {...pageProps} />)}
+        </NotificationsProvider>
       </MantineProvider>
     </IntlProvider>
   );
