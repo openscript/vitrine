@@ -9,6 +9,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import AuthGuard from '../components/AuthGuard';
 import Brand from '../components/Brand';
 import EmptyLayout from '../components/EmptyLayout';
+import { CONFIGURATION } from '../configuration';
 import { supabase } from '../utils/supabaseClient';
 import { CustomNextPage } from './_app';
 
@@ -45,12 +46,12 @@ const Login: CustomNextPage = () => {
     if (error) {
       alert(error.message);
     } else {
-      router.push('/');
+      router.push(CONFIGURATION.PATHS.HOME);
     }
   };
 
   return (
-    <AuthGuard isUnauthenticatedGuard redirectPath="/">
+    <AuthGuard isUnauthenticatedGuard redirectPath={CONFIGURATION.PATHS.HOME}>
       <Center css={LoginStyles}>
         <Paper withBorder p="xs" shadow="sm" css={LoginPaperStyles}>
           <LoadingOverlay visible={loading} />

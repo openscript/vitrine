@@ -10,6 +10,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import AuthGuard from '../components/AuthGuard';
 import Brand from '../components/Brand';
 import EmptyLayout from '../components/EmptyLayout';
+import { CONFIGURATION } from '../configuration';
 import { supabase } from '../utils/supabaseClient';
 import { CustomNextPage } from './_app';
 
@@ -51,12 +52,12 @@ const Register: CustomNextPage = () => {
     if (error) {
       showNotification({ message: intl.formatMessage({ id: 'notifications.errors.sign-up-failed' }, { message: error.message }) });
     } else {
-      router.push('/');
+      router.push(CONFIGURATION.PATHS.HOME);
     }
   };
 
   return (
-    <AuthGuard isUnauthenticatedGuard redirectPath="/">
+    <AuthGuard isUnauthenticatedGuard redirectPath={CONFIGURATION.PATHS.HOME}>
       <Center css={RegisterStyles}>
         <Paper withBorder p="xs" shadow="sm" css={RegisterPaperStyles}>
           <LoadingOverlay visible={loading} />
