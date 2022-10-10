@@ -1,14 +1,11 @@
 import { css } from '@emotion/react';
-import { Button, Center, LoadingOverlay, Paper, PasswordInput, Text, TextInput } from '@mantine/core';
+import { Button, Center, LoadingOverlay, Paper, PasswordInput, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { IconLock, IconMail } from '@tabler/icons';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ReactElement, useState } from 'react';
+import { useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import Brand from '../components/Brand';
 import AuthGuard from '../components/guards/AuthGuard';
-import EmptyLayout from '../components/layouts/EmptyLayout';
 import { CONFIGURATION } from '../configuration';
 import { supabase } from '../utils/supabaseClient';
 import { CustomNextPage } from './_app';
@@ -25,7 +22,6 @@ const LoginFormStyles = css`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin: 1rem 0;
 `;
 
 const Login: CustomNextPage = () => {
@@ -55,7 +51,6 @@ const Login: CustomNextPage = () => {
       <Center css={LoginStyles}>
         <Paper withBorder p="xs" shadow="sm" css={LoginPaperStyles}>
           <LoadingOverlay visible={loading} />
-          <Brand />
           <form onSubmit={form.onSubmit(handleSubmit)} css={LoginFormStyles}>
             <TextInput
               type="email"
@@ -76,19 +71,10 @@ const Login: CustomNextPage = () => {
               <FormattedMessage id="form.actions.login" />
             </Button>
           </form>
-          <Center>
-            <Text variant="link" size="sm">
-              <Link href="/register">{intl.formatMessage({ id: 'page.register.title' })}</Link>
-            </Text>
-          </Center>
         </Paper>
       </Center>
     </AuthGuard>
   );
-};
-
-Login.getLayout = function getLayout(page: ReactElement) {
-  return <EmptyLayout>{page}</EmptyLayout>;
 };
 
 export default Login;

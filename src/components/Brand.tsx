@@ -4,7 +4,8 @@ import { FormattedMessage } from 'react-intl';
 const brandStyles = css`
   margin: 0;
   line-height: 1;
-  height: 0.78em;
+  font-size: 1.7rem;
+  height: 0.65em;
 `;
 
 export default function Brand() {
