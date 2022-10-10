@@ -7,6 +7,7 @@ type DefaultLayoutProps = PropsWithChildren<{}>;
 
 export default function DefaultLayout({ children }: DefaultLayoutProps) {
   const session = useStore((state) => state.session);
+  const isAuthenticated = session ? true : false;
 
   const navbar = (
     <Navbar width={{ base: 300 }} p="xs">
@@ -14,7 +15,7 @@ export default function DefaultLayout({ children }: DefaultLayoutProps) {
     </Navbar>
   );
   return (
-    <AppShell header={<DefaultHeader isAuthenticated={session ? true : false} />} navbar={navbar}>
+    <AppShell header={<DefaultHeader isAuthenticated={isAuthenticated} />} navbar={navbar}>
       {children}
     </AppShell>
   );
