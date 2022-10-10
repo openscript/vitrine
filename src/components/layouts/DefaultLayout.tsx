@@ -2,9 +2,9 @@ import { css } from '@emotion/react';
 import { AppShell, Button, Header, Navbar } from '@mantine/core';
 import { PropsWithChildren } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { useStore } from '../state/store';
-import { supabase } from '../utils/supabaseClient';
-import Brand from './Brand';
+import { useStore } from '../../state/store';
+import { supabase } from '../../utils/supabaseClient';
+import Brand from '../Brand';
 
 type DefaultLayoutProps = PropsWithChildren<{}>;
 

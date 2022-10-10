@@ -8,7 +8,7 @@ import { ReactElement, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import AuthGuard from '../components/AuthGuard';
 import Brand from '../components/Brand';
-import EmptyLayout from '../components/EmptyLayout';
+import EmptyLayout from '../components/layouts/EmptyLayout';
 import { CONFIGURATION } from '../configuration';
 import { supabase } from '../utils/supabaseClient';
 import { CustomNextPage } from './_app';
