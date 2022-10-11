@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import { Button, Center, LoadingOverlay, Paper, PasswordInput, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { showNotification } from '@mantine/notifications';
 import { IconLock, IconMail } from '@tabler/icons';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -40,7 +41,10 @@ const Login: CustomNextPage = () => {
     const { data, error } = await supabase.auth.signInWithPassword({ email: form.values.email, password: form.values.password });
     setLoading(false);
     if (error) {
-      alert(error.message);
+      showNotification({
+        message: intl.formatMessage({ id: 'notifications.errors.sign-in-failed' }, { message: error.message }),
+        color: 'red',
+      });
     } else {
       router.push(CONFIGURATION.PATHS.HOME);
     }

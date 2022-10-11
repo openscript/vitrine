@@ -13,5 +13,11 @@
   "notifications.errors.sign-up-failed": "Registrierung fehlgeschlagen: {message}",
   "form.actions.logout": "Abmelden",
   "page.account.title": "Benutzerkonto",
-  "page.profile.title": "Benutzerprofil"
+  "page.profile.title": "Benutzerprofil",
+  "form.forename.label": "Vorname",
+  "form.surname.label": "Nachname",
+  "form.username.label": "Benutzername",
+  "form.biography.label": "Biografie",
+  "form.actions.save": "Speichern",
+  "notifications.errors.sign-in-failed": "Anmeldung fehlgeschlagen: {message}"
 }

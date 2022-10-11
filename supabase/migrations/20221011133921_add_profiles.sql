@@ -1,6 +1,6 @@
 -- Create a table for public "profiles"
 CREATE TABLE profiles (
-  id uuid REFERENCES auth.users NOT NULL,
+  id uuid REFERENCES auth.users NOT NULL DEFAULT auth.uid(),
   updated_at TIMESTAMP WITH TIME ZONE,
   forename TEXT,
   surname TEXT,
