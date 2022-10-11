@@ -3,5 +3,6 @@ export const CONFIGURATION = {
     HOME: '/',
     LOGIN: '/login',
     REGISTER: '/register',
+    PROFILE: '/profile',
   },
 };

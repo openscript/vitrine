@@ -12,5 +12,6 @@
   "errors.passwords-do-not-match": "Passwords do not match",
   "notifications.errors.sign-up-failed": "Sign up failed: {message}",
   "form.actions.logout": "Logout",
-  "page.account.title": "Account"
+  "page.account.title": "Account",
+  "page.profile.title": "Profile"
 }
