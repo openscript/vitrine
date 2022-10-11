@@ -11,5 +11,6 @@
   "page.login.title": "Anmelden",
   "errors.passwords-do-not-match": "Passwörter stimmen nicht überein",
   "notifications.errors.sign-up-failed": "Registrierung fehlgeschlagen: {message}",
-  "form.actions.logout": "Abmelden"
+  "form.actions.logout": "Abmelden",
+  "page.account.title": "Benutzerkonto"
 }

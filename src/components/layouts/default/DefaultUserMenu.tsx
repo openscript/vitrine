@@ -1,6 +1,7 @@
 import { css, Theme } from '@emotion/react';
-import { Avatar, Box, Group, Text, UnstyledButton } from '@mantine/core';
-import { IconChevronRight } from '@tabler/icons';
+import { Avatar, Box, Group, Menu, Text, UnstyledButton } from '@mantine/core';
+import { IconChevronRight, IconLogout, IconUser } from '@tabler/icons';
+import { FormattedMessage } from 'react-intl';
 
 const DefaultUserMenuStyles = (theme: Theme) => css`
   padding-top: ${theme.spacing.sm}px;
@@ -23,20 +24,33 @@ const TextBoxStyles = css`
 
 type DefaultUserMenuProps = {
   email?: string;
+  signOut: () => void;
 };
 
-export default function DefaultUserMenu({ email }: DefaultUserMenuProps) {
+export default function DefaultUserMenu({ email, signOut }: DefaultUserMenuProps) {
   return (
-    <Box css={DefaultUserMenuStyles}>
-      <UnstyledButton css={ButtonStyles}>
-        <Group>
-          <Avatar />
-          <Box css={TextBoxStyles}>
-            <Text>{email}</Text>
-          </Box>
-          <IconChevronRight size={22} />
-        </Group>
-      </UnstyledButton>
-    </Box>
+    <Menu position="right-end" width={300}>
+      <Menu.Target>
+        <Box css={DefaultUserMenuStyles}>
+          <UnstyledButton css={ButtonStyles}>
+            <Group>
+              <Avatar />
+              <Box css={TextBoxStyles}>
+                <Text>{email}</Text>
+              </Box>
+              <IconChevronRight size={22} />
+            </Group>
+          </UnstyledButton>
+        </Box>
+      </Menu.Target>
+      <Menu.Dropdown>
+        <Menu.Item icon={<IconUser size={16} stroke={1.5} />}>
+          <FormattedMessage id="page.account.title" />
+        </Menu.Item>
+        <Menu.Item icon={<IconLogout size={16} stroke={1.5} />} onClick={signOut}>
+          <FormattedMessage id="form.actions.logout" />
+        </Menu.Item>
+      </Menu.Dropdown>
+    </Menu>
   );
 }
