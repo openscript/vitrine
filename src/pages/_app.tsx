@@ -3,7 +3,7 @@ import { NotificationsProvider } from '@mantine/notifications';
 import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
-import { ReactElement, ReactNode, useEffect, useMemo } from 'react';
+import { ReactElement, ReactNode, useEffect, useMemo, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 import GlobalStyles from '../components/GlobalStyles';
 import DefaultLayout from '../components/layouts/DefaultLayout';
@@ -21,6 +21,7 @@ type CustomAppProps = AppProps & {
 };
 
 function VitrineApp({ Component, pageProps }: CustomAppProps) {
+  const [loading, isLoading] = useState(true);
   const setSession = useStore((state) => state.setSession);
   const { locale, defaultLocale } = useRouter();
   let currentLocale = locale || defaultLocale || 'de';
@@ -43,6 +44,7 @@ function VitrineApp({ Component, pageProps }: CustomAppProps) {
         data: { session },
       } = await supabase.auth.getSession();
       setSession(session);
+      isLoading(false);
     };
     getSession();
 
@@ -51,6 +53,7 @@ function VitrineApp({ Component, pageProps }: CustomAppProps) {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, newSession) => {
       setSession(newSession);
+      isLoading(false);
     });
 
     // unsubscribe to auth state changes on destruction
@@ -60,6 +63,10 @@ function VitrineApp({ Component, pageProps }: CustomAppProps) {
   }, [setSession]);
 
   const getLayout = Component.getLayout ?? ((page) => <DefaultLayout>{page}</DefaultLayout>);
+
+  if (loading) {
+    return null;
+  }
 
   return (
     <IntlProvider locale={currentLocale} defaultLocale={defaultLocale} messages={messages}>
