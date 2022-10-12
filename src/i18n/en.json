@@ -12,5 +12,13 @@
   "errors.passwords-do-not-match": "Passwords do not match",
   "notifications.errors.sign-up-failed": "Sign up failed: {message}",
   "form.actions.logout": "Logout",
-  "page.account.title": "Account"
+  "page.account.title": "Account",
+  "page.profile.title": "Profile",
+  "form.forename.label": "Forename",
+  "form.surname.label": "Surname",
+  "form.username.label": "Username",
+  "form.biography.label": "Biography",
+  "form.actions.save": "Save",
+  "notifications.errors.sign-in-failed": "Sign in failed: {message}",
+  "form.actions.upload-new-avatar": "Upload new avatar"
 }

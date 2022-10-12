@@ -10,6 +10,7 @@ export default function GlobalStyles() {
             color: ${theme.colors.dark[9]};
           }
         }
+
         main {
           background-color: ${theme.colors.gray[0]};
         }
