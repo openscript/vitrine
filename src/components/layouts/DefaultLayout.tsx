@@ -1,5 +1,6 @@
 import { AppShell } from '@mantine/core';
-import { PropsWithChildren, useEffect, useState } from 'react';
+import { PropsWithChildren, useEffect } from 'react';
+import shallow from 'zustand/shallow';
 import { useStore } from '../../state/store';
 import { supabase } from '../../utils/supabaseClient';
 import DefaultHeader from './default/DefaultHeader';
@@ -8,23 +9,15 @@ import DefaultNavbar from './default/DefaultNavbar';
 type DefaultLayoutProps = PropsWithChildren<{}>;
 
 export default function DefaultLayout({ children }: DefaultLayoutProps) {
-  const [avatar, setAvatar] = useState('');
-  const session = useStore((state) => state.session);
+  const [fetchProfile, avatar, session] = useStore((state) => [state.fetchProfile, state.avatar, state.session], shallow);
   const isAuthenticated = session ? true : false;
   const handleSignOut = () => supabase.auth.signOut();
 
   useEffect(() => {
-    const getCurrentProfile = async () => {
-      const { data: profile } = await supabase.from('profiles').select('forename, surname, avatar_url').eq('id', session?.user.id).single();
-      if (profile?.avatar_url) {
-        const { data: avatar } = await supabase.storage.from('avatars').download(profile.avatar_url);
-        if (avatar) {
-          setAvatar(URL.createObjectURL(avatar));
-        }
-      }
-    };
-    getCurrentProfile();
-  }, [session]);
+    if (isAuthenticated) {
+      fetchProfile();
+    }
+  }, [isAuthenticated, fetchProfile]);
 
   return (
     <AppShell

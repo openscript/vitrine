@@ -4,10 +4,10 @@ import { useForm } from '@mantine/form';
 import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
+import shallow from 'zustand/shallow';
 import AuthGuard from '../components/guards/AuthGuard';
 import { CONFIGURATION } from '../configuration';
 import { useStore } from '../state/store';
-import { supabase } from '../utils/supabaseClient';
 
 const FormStyles = css`
   display: flex;
@@ -16,9 +16,11 @@ const FormStyles = css`
 `;
 
 const Profile: NextPage = () => {
-  const [loading, isLoading] = useState(true);
+  const [updateAvatar, isLoading, profile, updateProfile] = useStore(
+    (state) => [state.updateAvatar, state.isLoading, state.profile, state.updateProfile],
+    shallow
+  );
   const [newAvatar, setNewAvatar] = useState<File | null>(null);
-  const session = useStore((state) => state.session);
   const intl = useIntl();
   const form = useForm({
     initialValues: {
@@ -31,50 +33,25 @@ const Profile: NextPage = () => {
   const setFormValues = form.setValues;
 
   useEffect(() => {
-    const uploadAvatar = async () => {
-      if (newAvatar && session) {
-        isLoading(true);
-        const fileExt = newAvatar.name.split('.').pop();
-        const fileName = `${session.user.id}.${fileExt}`;
-        const { data } = await supabase.storage.from('avatars').upload(fileName, newAvatar);
-        if (data?.path) {
-          await supabase.from('profiles').update({ avatar_url: data.path }).eq('id', session.user.id);
-        }
-        isLoading(false);
-      }
-    };
-    uploadAvatar();
-  }, [newAvatar, session]);
+    if (newAvatar) {
+      updateAvatar(newAvatar);
+    }
+  }, [newAvatar, updateAvatar]);
 
   useEffect(() => {
-    const getCurrentProfile = async () => {
-      const { data } = await supabase.from('profiles').select('forename, surname, username, biography').eq('id', session?.user.id).single();
-      if (data) {
-        setFormValues({
-          forename: data.forename || '',
-          surname: data.surname || '',
-          username: data.username || '',
-          biography: data.biography || '',
-        });
-      }
-      isLoading(false);
-    };
-    getCurrentProfile();
-  }, [session, setFormValues]);
+    if (profile) {
+      setFormValues(profile);
+    }
+  }, [profile, setFormValues]);
 
   const handleSubmit = async () => {
-    isLoading(true);
-
-    const newProfile = { ...form.values, id: session?.user.id, updated_at: new Date().toISOString() };
-    await supabase.from('profiles').upsert(newProfile);
-
-    isLoading(false);
+    updateProfile({ ...form.values });
   };
 
   return (
     <AuthGuard redirectPath={CONFIGURATION.PATHS.LOGIN}>
       <Paper withBorder p="xs" shadow="sm">
-        <LoadingOverlay visible={loading} />
+        <LoadingOverlay visible={isLoading} />
         <Title order={2}>
           <FormattedMessage id="page.profile.title" />
         </Title>
