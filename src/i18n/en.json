@@ -19,5 +19,6 @@
   "form.username.label": "Username",
   "form.biography.label": "Biography",
   "form.actions.save": "Save",
-  "notifications.errors.sign-in-failed": "Sign in failed: {message}"
+  "notifications.errors.sign-in-failed": "Sign in failed: {message}",
+  "form.actions.upload-new-avatar": "Upload new avatar"
 }

@@ -25,18 +25,19 @@ const TextBoxStyles = css`
 `;
 
 type DefaultUserMenuProps = {
+  avatar?: string;
   email?: string;
   signOut: () => void;
 };
 
-export default function DefaultUserMenu({ email, signOut }: DefaultUserMenuProps) {
+export default function DefaultUserMenu({ avatar, email, signOut }: DefaultUserMenuProps) {
   return (
     <Menu position="right-end" width={300}>
       <Menu.Target>
         <Box css={DefaultUserMenuStyles}>
           <UnstyledButton css={ButtonStyles}>
             <Group>
-              <Avatar />
+              <Avatar src={avatar} />
               <Box css={TextBoxStyles}>
                 <Text>{email}</Text>
               </Box>

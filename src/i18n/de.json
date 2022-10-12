@@ -19,5 +19,6 @@
   "form.username.label": "Benutzername",
   "form.biography.label": "Biografie",
   "form.actions.save": "Speichern",
-  "notifications.errors.sign-in-failed": "Anmeldung fehlgeschlagen: {message}"
+  "notifications.errors.sign-in-failed": "Anmeldung fehlgeschlagen: {message}",
+  "form.actions.upload-new-avatar": "Neuen Avatar hochladen"
 }

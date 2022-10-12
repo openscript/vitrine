@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { Button, LoadingOverlay, Paper, Textarea, TextInput, Title } from '@mantine/core';
+import { Button, FileButton, LoadingOverlay, Paper, Textarea, TextInput, Title } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
@@ -17,6 +17,7 @@ const FormStyles = css`
 
 const Profile: NextPage = () => {
   const [loading, isLoading] = useState(true);
+  const [newAvatar, setNewAvatar] = useState<File | null>(null);
   const session = useStore((state) => state.session);
   const intl = useIntl();
   const form = useForm({
@@ -28,6 +29,22 @@ const Profile: NextPage = () => {
     },
   });
   const setFormValues = form.setValues;
+
+  useEffect(() => {
+    const uploadAvatar = async () => {
+      if (newAvatar && session) {
+        isLoading(true);
+        const fileExt = newAvatar.name.split('.').pop();
+        const fileName = `${session.user.id}.${fileExt}`;
+        const { data } = await supabase.storage.from('avatars').upload(fileName, newAvatar);
+        if (data?.path) {
+          await supabase.from('profiles').update({ avatar_url: data.path }).eq('id', session.user.id);
+        }
+        isLoading(false);
+      }
+    };
+    uploadAvatar();
+  }, [newAvatar, session]);
 
   useEffect(() => {
     const getCurrentProfile = async () => {
@@ -61,6 +78,13 @@ const Profile: NextPage = () => {
         <Title order={2}>
           <FormattedMessage id="page.profile.title" />
         </Title>
+        <FileButton onChange={setNewAvatar} accept="image/*">
+          {(props) => (
+            <Button {...props}>
+              <FormattedMessage id="form.actions.upload-new-avatar" />
+            </Button>
+          )}
+        </FileButton>
         <form onSubmit={form.onSubmit(handleSubmit)} css={FormStyles}>
           <TextInput
             type="text"
