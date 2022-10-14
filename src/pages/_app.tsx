@@ -51,7 +51,10 @@ function VitrineApp({ Component, pageProps }: CustomAppProps) {
     // listen to auth state change events
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, newSession) => {
+    } = supabase.auth.onAuthStateChange((event, newSession) => {
+      if (event === 'SIGNED_OUT' || event === 'USER_DELETED') {
+        useStore.persist.clearStorage();
+      }
       setSession(newSession);
       isLoading(false);
     });

@@ -5,4 +5,7 @@ export const CONFIGURATION = {
     REGISTER: '/register',
     PROFILE: '/profile',
   },
+  STATE: {
+    NAME: 'vitrine-state',
+  },
 };

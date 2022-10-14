@@ -1,5 +1,6 @@
 import create from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
+import { CONFIGURATION } from '../configuration';
 import { createProfileSlice } from './profileSlice';
 import { createSessionSlice } from './sessionSlice';
 import { Slices } from './slices';
@@ -13,7 +14,7 @@ export const useStore = create<Slices>()(
       ...createStatusSlice(...x),
     })),
     {
-      name: 'vitrine-state',
+      name: CONFIGURATION.STATE.NAME,
       partialize: (state) => Object.fromEntries(Object.entries(state).filter(([key]) => !['session', 'isLoading'].includes(key))),
     }
   )
