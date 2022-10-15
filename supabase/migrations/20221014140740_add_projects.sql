@@ -10,6 +10,10 @@ CREATE TABLE projects (
 
 ALTER TABLE projects ENABLE ROW LEVEL SECURITY;
 
+CREATE POLICY "Projects are viewable by everyone."
+  ON projects FOR SELECT
+  USING ( true );
+
 CREATE POLICY "Users can insert their own projects."
   ON projects FOR INSERT
   with check ( auth.uid() = author );
