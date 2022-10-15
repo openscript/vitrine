@@ -6,6 +6,8 @@ import { useRouter } from 'next/router';
 const HeadlineStyles = css`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 41px;
 `;
 
 const TitleStyles = css`
