@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { Button, Group, Header } from '@mantine/core';
+import { NextLink } from '@mantine/next';
 import Link from 'next/link';
-import { Fragment } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { CONFIGURATION } from '../../../configuration';
 import Brand from '../../Brand';
@@ -28,18 +28,14 @@ export default function DefaultHeader({ isAuthenticated }: DefaultHeaderProps) {
       <Group>
         <LanguageSwitcher />
         {!isAuthenticated && (
-          <Fragment>
-            <Link href={CONFIGURATION.PATHS.LOGIN}>
-              <Button variant="light">
-                <FormattedMessage id="page.login.title" />
-              </Button>
-            </Link>
-            <Link href={CONFIGURATION.PATHS.REGISTER}>
-              <Button variant="light">
-                <FormattedMessage id="page.register.title" />
-              </Button>
-            </Link>
-          </Fragment>
+          <Button.Group>
+            <Button variant="outline" component={NextLink} href={CONFIGURATION.PATHS.LOGIN}>
+              <FormattedMessage id="page.login.title" />
+            </Button>
+            <Button variant="outline" component={NextLink} href={CONFIGURATION.PATHS.REGISTER}>
+              <FormattedMessage id="page.register.title" />
+            </Button>
+          </Button.Group>
         )}
       </Group>
     </Header>
