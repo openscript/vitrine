@@ -4,8 +4,9 @@ export const CONFIGURATION = {
     LOGIN: '/login',
     REGISTER: '/register',
     PROFILE: '/profile',
-    PROJECTS: {
-      INDEX: '/projects',
+    MY_PROJECTS: {
+      INDEX: '/my-projects',
+      PUBLISH: '/my-projects/publish',
     },
   },
   STATE: {

@@ -30,7 +30,7 @@ export default function DefaultNavbar({ userAvatar, userEmail, signOut }: Defaul
         <NavLink
           label={intl.formatMessage({ id: 'page.my-projects.title' })}
           icon={<IconRocket stroke={1.5} />}
-          {...getLinkProps(CONFIGURATION.PATHS.PROJECTS.INDEX, router.pathname)}
+          {...getLinkProps(CONFIGURATION.PATHS.MY_PROJECTS.INDEX, router.pathname)}
         />
       </Navbar.Section>
       <Navbar.Section>
