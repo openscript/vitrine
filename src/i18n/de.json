@@ -20,5 +20,6 @@
   "form.biography.label": "Biografie",
   "form.actions.save": "Speichern",
   "notifications.errors.sign-in-failed": "Anmeldung fehlgeschlagen: {message}",
-  "form.actions.upload-new-avatar": "Neuen Avatar hochladen"
+  "form.actions.upload-new-avatar": "Neuen Avatar hochladen",
+  "page.my-projects.title": "Meine Projekte"
 }

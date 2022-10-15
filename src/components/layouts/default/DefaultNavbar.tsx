@@ -2,6 +2,7 @@ import { Navbar, NavLink } from '@mantine/core';
 import { NextLink } from '@mantine/next';
 import { IconRocket } from '@tabler/icons';
 import { useRouter } from 'next/router';
+import { useIntl } from 'react-intl';
 import { CONFIGURATION } from '../../../configuration';
 import UserNavbarSegment from './DefaultUserMenu';
 
@@ -21,12 +22,13 @@ const getLinkProps = (href: string, currentPath: string) => {
 
 export default function DefaultNavbar({ userAvatar, userEmail, signOut }: DefaultNavbarProps) {
   const router = useRouter();
+  const intl = useIntl();
 
   return (
     <Navbar width={{ base: 300 }} p="xs">
       <Navbar.Section grow mt="md">
         <NavLink
-          label="Projects"
+          label={intl.formatMessage({ id: 'page.my-projects.title' })}
           icon={<IconRocket stroke={1.5} />}
           {...getLinkProps(CONFIGURATION.PATHS.PROJECTS.INDEX, router.pathname)}
         />
