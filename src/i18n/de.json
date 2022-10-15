@@ -25,5 +25,8 @@
   "footer.author": "openscript GmbH",
   "footer.code": "Quellcode",
   "footer.license": "Lizenz",
-  "page.home.title": "Startseite"
+  "page.home.title": "Startseite",
+  "page.my-projects.publish.title": "Projekt publizieren",
+  "form.title.label": "Titel",
+  "form.actions.publish": "Veröffentlichen"
 }

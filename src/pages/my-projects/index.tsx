@@ -9,7 +9,7 @@ const ProjectsIndex: NextPage = () => {
   const intl = useIntl();
 
   const actions = [
-    <Button key="publish-project" component={NextLink} href={CONFIGURATION.PATHS.MY_PROJECTS.PUBLISH}>
+    <Button key="publish-project" variant="light" component={NextLink} href={CONFIGURATION.PATHS.MY_PROJECTS.PUBLISH}>
       Publish project
     </Button>,
   ];

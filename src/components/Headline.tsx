@@ -15,7 +15,7 @@ const TitleStyles = css`
 type HeadlineProps = {
   back?: boolean;
   title: string;
-  actions: JSX.Element[];
+  actions?: JSX.Element[];
 };
 
 export default function Headline({ back, title, actions }: HeadlineProps) {
