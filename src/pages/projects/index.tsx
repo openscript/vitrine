@@ -1,7 +1,12 @@
+import { Paper } from '@mantine/core';
 import { NextPage } from 'next';
 
 const ProjectsIndex: NextPage = () => {
-  return <div>Projects</div>;
+  return (
+    <Paper withBorder p="xs">
+      abc
+    </Paper>
+  );
 };
 
 export default ProjectsIndex;

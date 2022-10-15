@@ -50,7 +50,7 @@ const Profile: NextPage = () => {
 
   return (
     <AuthGuard redirectPath={CONFIGURATION.PATHS.LOGIN}>
-      <Paper withBorder p="xs" shadow="sm">
+      <Paper withBorder p="xs">
         <LoadingOverlay visible={isLoading} />
         <Title order={2}>
           <FormattedMessage id="page.profile.title" />

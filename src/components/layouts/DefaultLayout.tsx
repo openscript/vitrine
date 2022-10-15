@@ -5,6 +5,7 @@ import shallow from 'zustand/shallow';
 import { CONFIGURATION } from '../../configuration';
 import { useStore } from '../../state/store';
 import { supabase } from '../../utils/supabaseClient';
+import CommonFooter from './CommonFooter';
 import DefaultHeader from './default/DefaultHeader';
 import DefaultNavbar from './default/DefaultNavbar';
 
@@ -32,7 +33,7 @@ export default function DefaultLayout({ children }: DefaultLayoutProps) {
       header={<DefaultHeader isAuthenticated={isAuthenticated} />}
       navbar={isAuthenticated ? <DefaultNavbar userAvatar={avatar} userEmail={session?.user.email} signOut={handleSignOut} /> : undefined}
     >
-      {children}
+      <CommonFooter>{children}</CommonFooter>
     </AppShell>
   );
 }

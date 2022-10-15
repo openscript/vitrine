@@ -4,7 +4,7 @@ import { IconRocket } from '@tabler/icons';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 import { CONFIGURATION } from '../../../configuration';
-import UserNavbarSegment from './DefaultUserMenu';
+import DefaultUserMenu from './DefaultUserMenu';
 
 type DefaultNavbarProps = {
   userAvatar?: string;
@@ -34,7 +34,7 @@ export default function DefaultNavbar({ userAvatar, userEmail, signOut }: Defaul
         />
       </Navbar.Section>
       <Navbar.Section>
-        <UserNavbarSegment avatar={userAvatar} email={userEmail} signOut={signOut} />
+        <DefaultUserMenu avatar={userAvatar} email={userEmail} signOut={signOut} />
       </Navbar.Section>
     </Navbar>
   );

@@ -21,5 +21,8 @@
   "form.actions.save": "Save",
   "notifications.errors.sign-in-failed": "Sign in failed: {message}",
   "form.actions.upload-new-avatar": "Upload new avatar",
-  "page.my-projects.title": "My projects"
+  "page.my-projects.title": "My projects",
+  "footer.author": "openscript Ltd.",
+  "footer.code": "Source code",
+  "footer.license": "License"
 }

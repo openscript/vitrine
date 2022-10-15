@@ -21,5 +21,8 @@
   "form.actions.save": "Speichern",
   "notifications.errors.sign-in-failed": "Anmeldung fehlgeschlagen: {message}",
   "form.actions.upload-new-avatar": "Neuen Avatar hochladen",
-  "page.my-projects.title": "Meine Projekte"
+  "page.my-projects.title": "Meine Projekte",
+  "footer.author": "openscript GmbH",
+  "footer.code": "Quellcode",
+  "footer.license": "Lizenz"
 }
