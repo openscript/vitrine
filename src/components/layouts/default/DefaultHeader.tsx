@@ -5,6 +5,7 @@ import { Fragment } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { CONFIGURATION } from '../../../configuration';
 import Brand from '../../Brand';
+import LanguageSwitcher from '../../LanguageSwitcher';
 
 const defaultHeaderStyles = css`
   display: flex;
@@ -25,6 +26,7 @@ export default function DefaultHeader({ isAuthenticated }: DefaultHeaderProps) {
         </a>
       </Link>
       <Group>
+        <LanguageSwitcher />
         {!isAuthenticated && (
           <Fragment>
             <Link href={CONFIGURATION.PATHS.LOGIN}>

@@ -7,6 +7,7 @@ import { ReactElement, ReactNode, useEffect, useMemo, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 import GlobalStyles from '../components/GlobalStyles';
 import DefaultLayout from '../components/layouts/DefaultLayout';
+import All from '../i18n/all.json';
 import German from '../i18n/de.json';
 import English from '../i18n/en.json';
 import { useStore } from '../state/store';
@@ -72,7 +73,7 @@ function VitrineApp({ Component, pageProps }: CustomAppProps) {
   }
 
   return (
-    <IntlProvider locale={currentLocale} defaultLocale={defaultLocale} messages={messages}>
+    <IntlProvider locale={currentLocale} defaultLocale={defaultLocale} messages={{ ...All, ...messages }}>
       <MantineProvider withGlobalStyles withNormalizeCSS>
         <NotificationsProvider>
           <GlobalStyles />
