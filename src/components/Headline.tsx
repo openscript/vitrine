@@ -1,20 +1,36 @@
 import { css } from '@emotion/react';
-import { Title } from '@mantine/core';
+import { ActionIcon, Title } from '@mantine/core';
+import { IconChevronLeft } from '@tabler/icons';
+import { useRouter } from 'next/router';
 
 const HeadlineStyles = css`
   display: flex;
   justify-content: space-between;
 `;
 
+const TitleStyles = css`
+  display: flex;
+`;
+
 type HeadlineProps = {
+  back?: boolean;
   title: string;
   actions: JSX.Element[];
 };
 
-export default function Headline({ title, actions }: HeadlineProps) {
+export default function Headline({ back, title, actions }: HeadlineProps) {
+  const router = useRouter();
+
   return (
     <div css={HeadlineStyles}>
-      <Title order={2}>{title}</Title>
+      <div css={TitleStyles}>
+        {back && (
+          <ActionIcon onClick={() => router.back()} mr="xs">
+            <IconChevronLeft />
+          </ActionIcon>
+        )}
+        <Title order={2}>{title}</Title>
+      </div>
       <div>{actions}</div>
     </div>
   );

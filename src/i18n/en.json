@@ -24,5 +24,6 @@
   "page.my-projects.title": "My projects",
   "footer.author": "openscript Ltd.",
   "footer.code": "Source code",
-  "footer.license": "License"
+  "footer.license": "License",
+  "page.home.title": "Home page"
 }
