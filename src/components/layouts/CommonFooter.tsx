@@ -7,10 +7,11 @@ const CommonFooterStyles = css`
   flex-direction: column;
   justify-content: space-between;
   min-height: 100%;
-  font-size: 0.8rem;
 `;
 
 const FooterStyles = css`
+  font-size: 0.8rem;
+
   ul {
     display: flex;
     justify-content: center;
