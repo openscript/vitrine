@@ -28,5 +28,7 @@
   "page.home.title": "Startseite",
   "page.my-projects.publish.title": "Projekt publizieren",
   "form.title.label": "Titel",
-  "form.actions.publish": "Veröffentlichen"
+  "form.actions.publish": "Veröffentlichen",
+  "form.short-description.label": "Kurzbeschreibung",
+  "form.description.label": "Beschreibung"
 }
