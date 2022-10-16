@@ -20,5 +20,19 @@
   "form.biography.label": "Biography",
   "form.actions.save": "Save",
   "notifications.errors.sign-in-failed": "Sign in failed: {message}",
-  "form.actions.upload-new-avatar": "Upload new avatar"
+  "form.actions.upload-new-avatar": "Upload new avatar",
+  "page.my-projects.title": "My projects",
+  "footer.author": "openscript Ltd.",
+  "footer.code": "Source code",
+  "footer.license": "License",
+  "page.home.title": "Home page",
+  "page.my-projects.publish.title": "Publish a project",
+  "form.title.label": "Title",
+  "form.actions.publish": "Publish",
+  "form.short-description.label": "Short description",
+  "form.description.label": "Description",
+  "model.attribute.title": "Title",
+  "model.attribute.short-description": "Short description",
+  "model.attribute.description": "Description",
+  "table.headings.actions": "Actions"
 }

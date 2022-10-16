@@ -5,6 +5,7 @@ import shallow from 'zustand/shallow';
 import { CONFIGURATION } from '../../configuration';
 import { useStore } from '../../state/store';
 import { supabase } from '../../utils/supabaseClient';
+import CommonFooter from './CommonFooter';
 import DefaultHeader from './default/DefaultHeader';
 import DefaultNavbar from './default/DefaultNavbar';
 
@@ -16,9 +17,12 @@ export default function DefaultLayout({ children }: DefaultLayoutProps) {
   const isAuthenticated = session ? true : false;
   const handleSignOut = async () => {
     const { error } = await supabase.auth.signOut();
-    if (!error) {
-      router.push(CONFIGURATION.PATHS.HOME);
+    if (error) {
+      useStore.persist.clearStorage();
+      localStorage.clear();
     }
+
+    router.push(CONFIGURATION.PATHS.HOME);
   };
 
   useEffect(() => {
@@ -32,7 +36,7 @@ export default function DefaultLayout({ children }: DefaultLayoutProps) {
       header={<DefaultHeader isAuthenticated={isAuthenticated} />}
       navbar={isAuthenticated ? <DefaultNavbar userAvatar={avatar} userEmail={session?.user.email} signOut={handleSignOut} /> : undefined}
     >
-      {children}
+      <CommonFooter>{children}</CommonFooter>
     </AppShell>
   );
 }

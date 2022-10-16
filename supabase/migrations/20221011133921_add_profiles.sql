@@ -21,7 +21,7 @@ CREATE POLICY "Public profiles are viewable by everyone."
 
 CREATE POLICY "Users can insert their own profile."
   ON profiles FOR INSERT
-  with check ( auth.uid() = id );
+  WITH CHECK ( auth.uid() = id );
 
 CREATE POLICY "Users can update own profile."
   ON profiles FOR UPDATE
@@ -45,3 +45,7 @@ CREATE POLICY "Avatar images are publicly accessible."
 CREATE POLICY "Anyone can upload an avatar."
   ON storage.objects FOR INSERT
   WITH CHECK ( bucket_id = 'avatars' );
+
+CREATE POLICY "Anyone can update an avatar."
+  ON storage.objects FOR UPDATE
+  USING ( bucket_id = 'avatars' );

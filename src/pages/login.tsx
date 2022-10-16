@@ -53,7 +53,7 @@ const Login: CustomNextPage = () => {
   return (
     <AuthGuard isUnauthenticatedGuard redirectPath={CONFIGURATION.PATHS.HOME}>
       <Center css={LoginStyles}>
-        <Paper withBorder p="xs" shadow="sm" css={LoginPaperStyles}>
+        <Paper withBorder p="xs" css={LoginPaperStyles}>
           <LoadingOverlay visible={loading} />
           <form onSubmit={form.onSubmit(handleSubmit)} css={LoginFormStyles}>
             <TextInput

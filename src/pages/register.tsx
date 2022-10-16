@@ -55,7 +55,7 @@ const Register: CustomNextPage = () => {
   return (
     <AuthGuard isUnauthenticatedGuard redirectPath={CONFIGURATION.PATHS.HOME}>
       <Center css={RegisterStyles}>
-        <Paper withBorder p="xs" shadow="sm" css={RegisterPaperStyles}>
+        <Paper withBorder p="xs" css={RegisterPaperStyles}>
           <LoadingOverlay visible={loading} />
           <form onSubmit={form.onSubmit(handleSubmit)} css={RegisterFormStyles}>
             <TextInput

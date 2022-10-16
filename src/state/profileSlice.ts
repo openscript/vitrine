@@ -95,7 +95,7 @@ export const createProfileSlice: StateCreator<Slices, Middlewares, [], ProfileSl
     if (session?.user.id) {
       const fileExt = avatar.name.split('.').pop();
       const fileName = `${session.user.id}.${fileExt}`;
-      const { data } = await supabase.storage.from('avatars').upload(fileName, avatar);
+      const { data } = await supabase.storage.from('avatars').upload(fileName, avatar, { upsert: true });
       if (data?.path) {
         const { error } = await supabase.from('profiles').update({ avatar_url: data.path }).eq('id', session.user.id);
 
