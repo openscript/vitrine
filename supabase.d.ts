@@ -1,4 +1,10 @@
-export type Json = string | number | boolean | null | { [key: string]: Json } | Json[];
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json }
+  | Json[];
 
 export interface Database {
   public: {
@@ -32,6 +38,35 @@ export interface Database {
           id?: string;
         };
       };
+      projects: {
+        Row: {
+          title: string;
+          icon_url: string | null;
+          short_description: string;
+          description: string | null;
+          id: string;
+          updated_at: string;
+          author: string;
+        };
+        Insert: {
+          title: string;
+          icon_url?: string | null;
+          short_description: string;
+          description?: string | null;
+          id?: string;
+          updated_at?: string;
+          author?: string;
+        };
+        Update: {
+          title?: string;
+          icon_url?: string | null;
+          short_description?: string;
+          description?: string | null;
+          id?: string;
+          updated_at?: string;
+          author?: string;
+        };
+      };
     };
     Views: {
       [_ in never]: never;
@@ -44,3 +79,4 @@ export interface Database {
     };
   };
 }
+

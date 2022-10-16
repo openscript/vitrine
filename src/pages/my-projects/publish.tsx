@@ -1,9 +1,10 @@
 import { css } from '@emotion/react';
-import { Button, Paper, Textarea, TextInput } from '@mantine/core';
+import { Button, LoadingOverlay, Paper, Textarea, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { NextPage } from 'next';
 import { FormattedMessage, useIntl } from 'react-intl';
 import Headline from '../../components/Headline';
+import { useStore } from '../../state/store';
 
 const FormStyles = css`
   display: flex;
@@ -14,13 +15,15 @@ const FormStyles = css`
 const PublishProject: NextPage = () => {
   const intl = useIntl();
   const form = useForm({ initialValues: { title: '', shortDescription: '', description: '' } });
+  const [updateProject, isLoading] = useStore((state) => [state.updateProject, state.isLoading]);
 
   const handleSubmit = () => {
-    alert('jo');
+    updateProject(form.values);
   };
 
   return (
     <Paper withBorder p="xs">
+      <LoadingOverlay visible={isLoading} />
       <Headline back title={intl.formatMessage({ id: 'page.my-projects.publish.title' })} />
       <form onSubmit={form.onSubmit(handleSubmit)} css={FormStyles}>
         <TextInput label={intl.formatMessage({ id: 'form.title.label' })} {...form.getInputProps('title')} required />
