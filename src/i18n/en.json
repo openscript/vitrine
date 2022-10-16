@@ -30,5 +30,9 @@
   "form.title.label": "Title",
   "form.actions.publish": "Publish",
   "form.short-description.label": "Short description",
-  "form.description.label": "Description"
+  "form.description.label": "Description",
+  "model.attribute.title": "Title",
+  "model.attribute.short-description": "Short description",
+  "model.attribute.description": "Description",
+  "table.headings.actions": "Actions"
 }

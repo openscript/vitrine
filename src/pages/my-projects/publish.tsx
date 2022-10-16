@@ -15,10 +15,10 @@ const FormStyles = css`
 const PublishProject: NextPage = () => {
   const intl = useIntl();
   const form = useForm({ initialValues: { title: '', shortDescription: '', description: '' } });
-  const [updateProject, isLoading] = useStore((state) => [state.updateProject, state.isLoading]);
+  const [updateMyProject, isLoading] = useStore((state) => [state.updateMyProject, state.isLoading]);
 
   const handleSubmit = () => {
-    updateProject(form.values);
+    updateMyProject(form.values);
   };
 
   return (

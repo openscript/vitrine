@@ -13,11 +13,30 @@ type Project = {
 export type MyProjectsSlice = {
   myProject?: Project;
   myProjects?: Project[];
-  updateProject: (project: Project) => void;
+  fetchMyProjects: () => void;
+  updateMyProject: (project: Project) => void;
 };
 
 export const createMyProjectSlice: StateCreator<Slices, Middlewares, [], MyProjectsSlice> = (set, get) => ({
-  updateProject: async (project) => {
+  fetchMyProjects: async () => {
+    set({ isLoading: true });
+    const session = get().session;
+
+    if (session) {
+      const { data, error } = await supabase.from('projects').select().eq('author', session.user.id);
+      if (!error && data) {
+        set({
+          myProjects: data.map((project) => ({
+            title: project.title,
+            shortDescription: project.short_description,
+            description: project.description,
+          })),
+        });
+      }
+    }
+    set({ isLoading: false });
+  },
+  updateMyProject: async (project) => {
     set({ isLoading: true });
     const session = get().session;
 
