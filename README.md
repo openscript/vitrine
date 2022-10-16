@@ -1,6 +1,17 @@
 # Vitrine
 
-Vitrine create a place to showcase your digital projects.
+Vitrine creates a place to showcase your digital projects. 
+
+> I use this project to try out new tools and technologies like Supabase and Zustand.
+
+## Stack
+
+ - [Supabase](https://supabase.com/)
+ - [React](https://reactjs.org/)
+ - [Zustand](https://zustand-demo.pmnd.rs/)
+ - [Mantine](https://mantine.dev/)
+ - [AutoMapper Typescript](https://automapperts.netlify.app/)
+ - [React Intl](https://formatjs.io/)
 
 ## Development
 
