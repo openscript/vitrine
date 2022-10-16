@@ -17,9 +17,12 @@ export default function DefaultLayout({ children }: DefaultLayoutProps) {
   const isAuthenticated = session ? true : false;
   const handleSignOut = async () => {
     const { error } = await supabase.auth.signOut();
-    if (!error) {
-      router.push(CONFIGURATION.PATHS.HOME);
+    if (error) {
+      useStore.persist.clearStorage();
+      localStorage.clear();
     }
+
+    router.push(CONFIGURATION.PATHS.HOME);
   };
 
   useEffect(() => {

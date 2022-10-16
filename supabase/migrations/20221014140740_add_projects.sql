@@ -16,7 +16,7 @@ CREATE POLICY "Projects are viewable by everyone."
 
 CREATE POLICY "Users can insert their own projects."
   ON projects FOR INSERT
-  with check ( auth.uid() = author );
+  WITH CHECK ( auth.uid() = author );
 
 CREATE POLICY "Users can update their own projects."
   ON projects FOR UPDATE
