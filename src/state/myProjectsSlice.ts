@@ -5,6 +5,7 @@ import { Middlewares } from './middlewares';
 import { Slices } from './slices';
 
 type Project = {
+  id?: string;
   title: string;
   shortDescription: string;
   description?: string | null;
@@ -15,6 +16,7 @@ export type MyProjectsSlice = {
   myProjects?: Project[];
   fetchMyProjects: () => void;
   updateMyProject: (project: Project) => void;
+  deleteMyProject: (id: string) => void;
 };
 
 export const createMyProjectSlice: StateCreator<Slices, Middlewares, [], MyProjectsSlice> = (set, get) => ({
@@ -27,6 +29,7 @@ export const createMyProjectSlice: StateCreator<Slices, Middlewares, [], MyProje
       if (!error && data) {
         set({
           myProjects: data.map((project) => ({
+            id: project.id,
             title: project.title,
             shortDescription: project.short_description,
             description: project.description,
@@ -54,9 +57,23 @@ export const createMyProjectSlice: StateCreator<Slices, Middlewares, [], MyProje
         set({
           myProjects: [
             ...currentProjects,
-            { title: data[0].title, shortDescription: data[0].short_description, description: data[0].description },
+            { id: data[0].id, title: data[0].title, shortDescription: data[0].short_description, description: data[0].description },
           ],
         });
+      }
+    }
+
+    set({ isLoading: false });
+  },
+  deleteMyProject: async (id) => {
+    set({ isLoading: true });
+
+    const { error } = await supabase.from('projects').delete().eq('id', id);
+
+    if (!error) {
+      const projects = get().myProjects;
+      if (projects) {
+        set({ myProjects: projects.filter((p) => p.id !== id) });
       }
     }
 

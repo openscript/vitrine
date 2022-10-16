@@ -1,5 +1,6 @@
-import { Button, LoadingOverlay, Paper, Table } from '@mantine/core';
+import { ActionIcon, Button, LoadingOverlay, Paper, Table } from '@mantine/core';
 import { NextLink } from '@mantine/next';
+import { IconTrash } from '@tabler/icons';
 import { NextPage } from 'next';
 import { useEffect } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -9,7 +10,12 @@ import { useStore } from '../../state/store';
 
 const ProjectsIndex: NextPage = () => {
   const intl = useIntl();
-  const [isLoading, fetchMyProjects, myProjects] = useStore((state) => [state.isLoading, state.fetchMyProjects, state.myProjects]);
+  const [isLoading, fetchMyProjects, deleteMyProject, myProjects] = useStore((state) => [
+    state.isLoading,
+    state.fetchMyProjects,
+    state.deleteMyProject,
+    state.myProjects,
+  ]);
 
   useEffect(() => {
     fetchMyProjects();
@@ -48,6 +54,11 @@ const ProjectsIndex: NextPage = () => {
               <td>{p.title}</td>
               <td>{p.shortDescription}</td>
               <td>{p.description}</td>
+              <td>
+                <ActionIcon onClick={() => deleteMyProject(p.id)}>
+                  <IconTrash />
+                </ActionIcon>
+              </td>
             </tr>
           ))}
         </tbody>
