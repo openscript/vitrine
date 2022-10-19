@@ -36,12 +36,12 @@ export default function CommonFooter({ children }: CommonFooterProps) {
             </a>
           </li>
           <li>
-            <a href="https://github.com/openscript-ch/vitrine">
+            <a href="https://github.com/openscript/vitrine">
               <FormattedMessage id="footer.code" />
             </a>
           </li>
           <li>
-            <a href="https://github.com/openscript-ch/vitrine/LICENSE">
+            <a href="https://github.com/openscript/vitrine/blob/main/LICENSE">
               <FormattedMessage id="footer.license" />
             </a>
           </li>
