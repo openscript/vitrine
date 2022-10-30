@@ -1,6 +1,6 @@
 import { css, Theme } from '@emotion/react';
 import { Button } from '@mantine/core';
-import { NextLink } from '@mantine/next';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FormattedMessage, useIntl } from 'react-intl';
 
@@ -21,7 +21,7 @@ export default function LanguageSwitcher() {
   return (
     <Button.Group css={LanguageSwitcherStyles}>
       {locales.map((l) => (
-        <Button key={l} component={NextLink} href="" locale={l} variant="default" className={l === locale ? 'active' : ''}>
+        <Button key={l} component={Link} href="" locale={l} variant="default" className={l === locale ? 'active' : ''}>
           <FormattedMessage id={l} />
         </Button>
       ))}

@@ -1,6 +1,6 @@
 import { Navbar, NavLink } from '@mantine/core';
-import { NextLink } from '@mantine/next';
 import { IconRocket } from '@tabler/icons';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 import { CONFIGURATION } from '../../../configuration';
@@ -14,7 +14,7 @@ type DefaultNavbarProps = {
 
 const getLinkProps = (href: string, currentPath: string) => {
   return {
-    component: NextLink,
+    component: Link,
     href,
     active: currentPath.includes(href) ? true : false,
   };

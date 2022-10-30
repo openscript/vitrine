@@ -1,7 +1,7 @@
 import { ActionIcon, Button, LoadingOverlay, Paper, Table } from '@mantine/core';
-import { NextLink } from '@mantine/next';
 import { IconTrash } from '@tabler/icons';
 import { NextPage } from 'next';
+import Link from 'next/link';
 import { useEffect } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import Headline from '../../components/Headline';
@@ -22,7 +22,7 @@ const ProjectsIndex: NextPage = () => {
   }, [fetchMyProjects]);
 
   const actions = [
-    <Button key="publish-project" variant="light" component={NextLink} href={CONFIGURATION.PATHS.MY_PROJECTS.PUBLISH}>
+    <Button key="publish-project" variant="light" component={Link} href={CONFIGURATION.PATHS.MY_PROJECTS.PUBLISH}>
       Publish project
     </Button>,
   ];
@@ -55,7 +55,7 @@ const ProjectsIndex: NextPage = () => {
               <td>{p.shortDescription}</td>
               <td>{p.description}</td>
               <td>
-                <ActionIcon onClick={() => deleteMyProject(p.id)}>
+                <ActionIcon onClick={() => (p.id ? deleteMyProject(p.id) : null)}>
                   <IconTrash />
                 </ActionIcon>
               </td>

@@ -1,7 +1,7 @@
 import { css, Theme } from '@emotion/react';
 import { Avatar, Box, Group, Menu, Text, UnstyledButton } from '@mantine/core';
-import { NextLink } from '@mantine/next';
 import { IconChevronRight, IconLogout, IconUser } from '@tabler/icons';
+import Link from 'next/link';
 import { FormattedMessage } from 'react-intl';
 import { CONFIGURATION } from '../../../configuration';
 
@@ -47,7 +47,7 @@ export default function DefaultUserMenu({ avatar, email, signOut }: DefaultUserM
         </Box>
       </Menu.Target>
       <Menu.Dropdown>
-        <Menu.Item icon={<IconUser size={16} stroke={1.5} />} component={NextLink} href={CONFIGURATION.PATHS.PROFILE}>
+        <Menu.Item icon={<IconUser size={16} stroke={1.5} />} component={Link} href={CONFIGURATION.PATHS.PROFILE}>
           <FormattedMessage id="page.profile.title" />
         </Menu.Item>
         <Menu.Item icon={<IconLogout size={16} stroke={1.5} />} onClick={signOut}>
