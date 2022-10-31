@@ -22,7 +22,8 @@
         "tamasfe.even-better-toml",
         "styled-components.vscode-styled-components",
         "esbenp.prettier-vscode",
-        "openscript.i18n-ally-fork"
+        "openscript.i18n-ally-fork",
+        "eamodio.gitlens"
       ]
     }
   },
