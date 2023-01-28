@@ -1,6 +1,6 @@
 import { css, Theme } from '@emotion/react';
 import { Avatar, Box, Group, Menu, Text, UnstyledButton } from '@mantine/core';
-import { IconChevronRight, IconLogout, IconUser } from '@tabler/icons';
+import { IconChevronRight, IconLogout, IconUser } from '@tabler/icons-react';
 import Link from 'next/link';
 import { FormattedMessage } from 'react-intl';
 import { CONFIGURATION } from '../../../configuration';

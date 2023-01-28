@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import { Button, Center, LoadingOverlay, Paper, PasswordInput, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { showNotification } from '@mantine/notifications';
-import { IconLock, IconMail } from '@tabler/icons';
+import { IconLock, IconMail } from '@tabler/icons-react';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';

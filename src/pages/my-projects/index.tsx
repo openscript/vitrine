@@ -1,5 +1,5 @@
 import { ActionIcon, Button, LoadingOverlay, Paper, Table } from '@mantine/core';
-import { IconTrash } from '@tabler/icons';
+import { IconTrash } from '@tabler/icons-react';
 import { NextPage } from 'next';
 import Link from 'next/link';
 import { useEffect } from 'react';

@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { ActionIcon, Title } from '@mantine/core';
-import { IconChevronLeft } from '@tabler/icons';
+import { IconChevronLeft } from '@tabler/icons-react';
 import { useRouter } from 'next/router';
 
 const HeadlineStyles = css`

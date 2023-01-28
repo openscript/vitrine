@@ -1,5 +1,5 @@
 import { Navbar, NavLink } from '@mantine/core';
-import { IconRocket } from '@tabler/icons';
+import { IconRocket } from '@tabler/icons-react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
