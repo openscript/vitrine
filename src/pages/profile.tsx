@@ -4,7 +4,7 @@ import { useForm } from '@mantine/form';
 import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import shallow from 'zustand/shallow';
+import { shallow } from 'zustand/shallow';
 import AuthGuard from '../components/guards/AuthGuard';
 import Headline from '../components/Headline';
 import { CONFIGURATION } from '../configuration';

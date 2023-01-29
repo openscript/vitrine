@@ -1,7 +1,7 @@
 import { AppShell } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { PropsWithChildren, useEffect } from 'react';
-import shallow from 'zustand/shallow';
+import { shallow } from 'zustand/shallow';
 import { CONFIGURATION } from '../../configuration';
 import { useStore } from '../../state/store';
 import { supabase } from '../../utils/supabaseClient';
